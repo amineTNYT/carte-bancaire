@@ -1,55 +1,54 @@
 ┌──────────────────────────────────────────────────────────────────┐
 │                      TDNT (Table de déclaration nouveaux types)  │
 ├──────────────────────────────────────────────────────────────────┤
+│  tab1 : tableau de 10  chaînes                                   │
 │                                                                  │
-│ tab1 : tableau[10] de chaîne                                     │
-│ tab2 : tableau[10] de chaîne                                     │
+│ tab2 : tableau de 10  chaînes                                    │
 │                                                                  │
 └──────────────────────────────────────────────────────────────────┘
 
-                                                                      TDOG
+                                                                 TDOG
                                 ┌──────────────────────────────────────────────────────────┐
-                                │               Objet              │      Nature / Type     │
+                                │               Objet              │      Nature / Type    │
                                 ├──────────────────────────────────────────────────────────┤
-                                │ t                                │ tab1                   │
+                                │ t                                │ tab1                  │
                                 ├──────────────────────────────────────────────────────────┤
-                                │ carte                            │ tab2                   │
+                                │ carte                            │ tab2                  │
                                 ├──────────────────────────────────────────────────────────┤
-                                │ n                                │ entier                 │
+                                │ n                                │ entier                │
                                 └──────────────────────────────────────────────────────────┘
 
 Algorithme Problème_Cartes
 début
-    saisie_n(n)
+    saisie(n,1,10)
     remplir(t, n)
     former(carte, t, n)
-    écrire("Tableau final : ")
     affichage(carte, n)
 fin
 
-                                                                            TDOL
+                                                                            TDOG
                                 ┌──────────────────────────────────────────────────────────┐
                                 │               Objet              │      Nature / Type     │
                                 ├──────────────────────────────────────────────────────────┤
-                                │ min, max                         │ entier                 │
+                                │ t                                │ Tab14                  │
+                                ├──────────────────────────────────────────────────────────┤
+                                │ carte                            │ Tab15                  │
+                                ├──────────────────────────────────────────────────────────┤
+                                │ n                                │ entier                 │
+                                ├──────────────────────────────────────────────────────────┤
+                                │ saisir,remplir,former            │ procédure             │
+                                │  affichage                       │                        │
                                 └──────────────────────────────────────────────────────────┘
 
-procédure saisie_n(@n : entier)
+procédure saisie(@n:entier,mon,max)
 début
-    min ← 1
-    max ← 10
     répéter
         écrire("Donner la taille du tableau (entre ", min, " et ", max, ") = ")
         lire(n)
     jusqu'à (min ≤ n) ET (n ≤ max)
 fin
 
-                                                                            TDOL
-                                ┌──────────────────────────────────────────────────────────┐
-                                │               Objet              │      Nature / Type     │
-                                ├──────────────────────────────────────────────────────────┤
-                                │ i, valide                        │ entier                 │
-                                └──────────────────────────────────────────────────────────┘
+                          
 
 fonction verif(ch : chaîne):booléen
 début
@@ -67,43 +66,45 @@ fin
 
                                                                             TDOL
                                 ┌──────────────────────────────────────────────────────────┐
-                                │               Objet              │      Nature / Type     │
+                                │               Objet              │      Nature / Type    │
                                 ├──────────────────────────────────────────────────────────┤
-                                │ i                                │ entier                 │
+                                │ i                                │ entier                │
                                 └──────────────────────────────────────────────────────────┘
+                                | valider                          | booléen               |
+
+
 
 procédure remplir(@t : tab1, n : entier)
 début
     pour i de 0 à n-1 faire
         répéter
-            écrire("t[", i, "] = ")
             lire(t[i])
         jusqu'à (verif(t[i]) = VRAI) ET (long(t[i]) = 14)
     fin pour
 fin
-
-                                                                            TDOL
+                                                                            
+                                                           TDOL
                                 ┌──────────────────────────────────────────────────────────┐
-                                │               Objet              │      Nature / Type     │
+                                │               Objet              │      Nature / Type    │
                                 ├──────────────────────────────────────────────────────────┤
-                                │ ch0, i                           │ chaîne, entier         │
+                                │ i                                │ entier                │
                                 └──────────────────────────────────────────────────────────┘
 
-fonction inverse(ch : chaîne):chaîne
+
+procédure former(@dest : tab2, src : tab1, n : entier)
 début
-    ch0 ← ""
-    pour i de 0 à long(ch)-1 faire
-        ch0 ← ch[i] + ch0
+    pour i de 0 à n-1 faire
+        dest[i] ← src[i] + calcul(src[i])
     fin pour
-    retourner ch0
-fin
-
-                                                                            TDOL
+fin 
+      
+                                                           TDOL
                                 ┌──────────────────────────────────────────────────────────┐
-                                │               Objet              │      Nature / Type     │
+                                │               Objet              │      Nature / Type    │
                                 ├──────────────────────────────────────────────────────────┤
-                                │ ch, total, i, digit, dbl, controle │ entier              │
+                                │ i                                │ entier                │
                                 └──────────────────────────────────────────────────────────┘
+                                | calcul                           |fonction               |
 
 fonction calcul(ch1 : chaîne):entier
 début
@@ -131,30 +132,36 @@ fin
 
                                                                             TDOL
                                 ┌──────────────────────────────────────────────────────────┐
-                                │               Objet              │      Nature / Type     │
+                                │               Objet              │      Nature / Type    │
                                 ├──────────────────────────────────────────────────────────┤
-                                │ i, ctrl                          │ entier                 │
+                                │ ch, total, i, digit, dbl, controle │ entier              │
                                 └──────────────────────────────────────────────────────────┘
+                       
 
-procédure former(@dest : tab2, src : tab1, n : entier)
+fonction inverse(ch : chaîne):chaîne
 début
-    pour i de 0 à n-1 faire
-        ctrl ← calcul(src[i])
-        dest[i] ← src[i] + chaîne(ctrl)
+    ch0 ← ""
+    pour i de 0 à long(ch)-1 faire
+        ch0 ← ch[i] + ch0
     fin pour
-fin
-
-                                                                            TDOL
+    retourner ch0
+fin                                                               TDOL
                                 ┌──────────────────────────────────────────────────────────┐
-                                │               Objet              │      Nature / Type     │
+                                │               Objet              │      Nature / Type    │
                                 ├──────────────────────────────────────────────────────────┤
-                                │ i                                │ entier                 │
+                                │ ch0, i                           │ chaîne, entier        │
                                 └──────────────────────────────────────────────────────────┘
-
+                    
 procédure affichage(t : tab2, n : entier)
 début
     pour i de 0 à n-1 faire
-        écrire(t[i], " | ")
+        écrire(t[i])
     fin pour
-    écrire()
 fin
+
+                                                            TDOL
+                                  ┌──────────────────────────────────────────────────────────┐
+                                  │               Objet              │      Nature / Type    │
+                                  ├──────────────────────────────────────────────────────────┤
+                                  │ i                                │ entier                │
+                                  └──────────────────────────────────────────────────────────┘
